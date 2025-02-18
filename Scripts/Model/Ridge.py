@@ -2,7 +2,7 @@ from sklearn.linear_model import Ridge
 import numpy as np
 from evaluate import * 
 
-def RidgeModel(x_train,y_train,x_test,y_test):
+def RidgeModel(x_train,y_train,x_test,y_test,models):
     ridge = Ridge()
     ridge.fit(x_train, y_train)
     predictions = ridge.predict(x_test)
@@ -12,7 +12,7 @@ def RidgeModel(x_train,y_train,x_test,y_test):
     print("RMSE:", rmse)
     print("R2 Score:", r_squared)
     print("-"*30)
-    rmse_cross_val = rmse_cv(ridge)
+    rmse_cross_val = rmse_cv(ridge,x_train,y_train)
     print("RMSE Cross-Validation:", rmse_cross_val)
 
     new_row = {"Model": "Ridge","MAE": mae, "MSE": mse, "RMSE": rmse, "R2 Score": r_squared, "RMSE (Cross-Validation)": rmse_cross_val}

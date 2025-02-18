@@ -14,7 +14,7 @@ def lin_reg(x_train,y_train,x_test,y_test,models):
     print("RMSE:", rmse)
     print("R2 Score:", r_squared)
     print("-"*30)
-    # rmse_cross_val = rmse_cv(lin_reg)
+    rmse_cross_val = rmse_cv(lin_reg,x_train,y_train)
     print("RMSE Cross-Validation:", rmse_cross_val)
     new_row = {"Model": "LinearRegression","MAE": mae, "MSE": mse, "RMSE": rmse, "R2 Score": r_squared, "RMSE (Cross-Validation)": rmse_cross_val}
     models = models.append(new_row, ignore_index=True)
